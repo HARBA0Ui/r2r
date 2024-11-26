@@ -1,0 +1,116 @@
+<header class="bg-blue-950 h-[20vh] relative z-20">
+  <nav
+    class="flex justify-between h-full items-center mx-auto max-w-[1500px] px-12 xl:px-4"
+  >
+    <!-- Logo -->
+    <app-logo></app-logo>
+
+    <!-- Navigation Links -->
+    <ul class="flex items-center gap-24 text-white capitalize">
+      <li>
+        <a routerLink="/products/gender/men" class="link text-xl text-white"
+          >men</a
+        >
+      </li>
+      <li>
+        <a routerLink="/products/gender/women" class="link text-xl text-white"
+          >women</a
+        >
+      </li>
+      <li>
+        <a routerLink="/products/gender/unisex" class="link text-xl text-white"
+          >unisex</a
+        >
+      </li>
+
+      <!-- More Dropdown -->
+      <li class="relative group">
+        <a href="#" class="text-xl text-white">more...</a>
+        <!-- Dropdown Menu -->
+        <ul
+          class="absolute left-0 bg-gray-200 border border-blue-950/20 text-zinc-950 font-semibold drop-shadow-md py-4 p-6 rounded-br-md mt-2 space-y-2 transition-all duration-300 ease-in-out transform scale-y-0 origin-top group-hover:scale-y-100 group-hover:opacity-100 opacity-0"
+        >
+          <li>
+            <a
+              routerLink="/products/category/t-shirt"
+              class="block text-lg hover:text-blue-950 transition-all"
+              >T-Shirts</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/products/category/hoodie"
+              class="block text-lg hover:text-blue-950 transition-all"
+              >Hoodies</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/products/category/shirt"
+              class="block text-lg hover:text-blue-950 transition-all"
+              >Shirts</a
+            >
+          </li>
+          <div class="w-full h-[1px] rounded-full bg-blue-950"></div>
+          <li>
+            <a
+              routerLink="/products/level/1"
+              class="block text-lg hover:text-blue-950 transition-all"
+              >Level 1</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/products/level/2"
+              class="block text-lg hover:text-blue-950 transition-all"
+              >Level 2</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/products/level/3"
+              class="block text-lg hover:text-blue-950 transition-all"
+              >Level 3</a
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <!-- Search Form -->
+    <div class="flex items-center gap-3">
+      <form
+        class="relative flex items-center"
+        (submit)="onSearch($event, label.value)"
+      >
+        <input
+          type="text"
+          placeholder="Search..."
+          class="px-4 py-2 pl-10 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
+          required
+          #label
+        />
+        <button
+          type="submit"
+          class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-blue-700 focus:outline-none"
+        >
+          <i class="bi bi-search"></i>
+        </button>
+      </form>
+      <div class="relative">
+        <button routerLink="/cart" class="relative">
+          <i class="bi bi-cart mr-2 text-xl text-white"></i>
+        </button>
+
+        <!-- Badge for Product Count -->
+        @if(cartItemsCount > 0){
+        <div
+          class="absolute -top-1 -right-2 bg-red-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full"
+        >
+          {{ cartItemsCount }}
+        </div>
+        }
+      </div>
+    </div>
+  </nav>
+</header>

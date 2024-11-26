@@ -1,0 +1,37 @@
+.dash-link {
+  width: 100%;
+  border-right: 1px solid rgb(23 37 84);
+}
+
+.dash-link{
+  display: block;
+  padding: 1rem 2rem;
+  background: white;
+  font-weight: bold;
+
+  position: relative;
+  z-index: 2;
+  transition-delay: 0.1s;
+}
+
+.dash-link::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 0%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: rgb(66, 29, 100);
+
+  transition: 0.3s ease-in-out;
+  z-index: -1;
+}
+
+.dash-link:hover {
+  color: white;
+}
+
+.dash-link:hover::before {
+  width: 100%;
+}

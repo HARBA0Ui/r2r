@@ -1,0 +1,36 @@
+<a
+  [routerLink]="['/product', product.id]"
+  class="flex flex-col cursor-pointer h-full w-fit"
+>
+  <div class="overflow-hidden group relative rounded-xl border border-blue-950">
+    <img
+      [src]="product.imgs[0]"
+      class="group-hover:scale-105 imgShadow object-cover !flex-1 transition-all rounded-xl w-[150px] h-[200px] sm:w-[200px] sm:h-[270px] md:w-[250px] md:h-[350px] lg:w-[360px] lg:h-[490px]"
+    />
+    <div
+      class="absolute inset-0 bg-blue-950 brightness-50 opacity-0 group-hover:opacity-30 transition-opacity rounded-xl"
+    ></div>
+  </div>
+
+  <div
+    class="text-left pt-2 text-zinc-950 px-3 flex justify-between items-center"
+  >
+    <div>
+      <h2 class="text-sm md:text-md md:-mb-2 leading-3 md:leading-normal">
+        {{ product.title }}
+        <!-- Display product title -->
+      </h2>
+      <span class="font-bold !text-lg md:text-sm">
+        {{ product.price }} TND
+        <!-- Display product price -->
+      </span>
+    </div>
+    <p
+      class="!text-md md:text-sm bg-blue-950 text-white py-1 px-2 rounded-full flex items-center gap-x-1"
+    >
+      <i class="bi bi-star-fill"></i>
+      Level required: {{ product.requiredLevel }} <br />
+      <!-- Display product price -->
+    </p>
+  </div>
+</a>

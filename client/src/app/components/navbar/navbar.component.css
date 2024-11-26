@@ -1,0 +1,47 @@
+.link {
+  position: relative;
+}
+
+.link::before {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  width: 0%;
+  background: white;
+
+  transition: 0.2s ease-in-out;
+  height: 2px;
+  width: 0%;
+  border-radius: 5rem;
+}
+
+.link:hover::before {
+  width: 100%;
+}
+
+/* Custom Styles for Dropdown */
+ul.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #1e3a8a; /* Tailwind blue-800 */
+    color: white;
+    padding: 16px;
+    display: none;
+    width: max-content;
+  }
+  
+  li:hover > .dropdown-menu {
+    display: block;
+  }
+  
+  .dropdown-menu li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px;
+  }
+  
+  .dropdown-menu li a:hover {
+    background-color: #2563eb; /* Tailwind blue-600 */
+  }

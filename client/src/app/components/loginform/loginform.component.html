@@ -1,0 +1,76 @@
+<div class="min-h-[55vh] flex items-center justify-center bg-gray-100 p-20">
+  <div class="w-full max-w-md bg-white rounded-lg shadow-lg p-8">
+    <!-- Logo -->
+    <div class="flex justify-center">
+      <img src="r2rlg.png" alt="Logo" class="w-16 h-16">
+    </div>
+
+    <!-- Title -->
+    <h2 class="text-2xl font-semibold text-center mt-4 mb-6">Login</h2>
+
+    <!-- Form -->
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <!-- Email Field -->
+      <div class="mb-4">
+        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          placeholder="Enter your email"
+          class="mt-1 w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+          [ngClass]="{
+            'border-red-500': loginForm.controls['email'].invalid && loginForm.controls['email'].touched,
+            'border-gray-300': loginForm.controls['email'].valid || !loginForm.controls['email'].touched
+          }"
+        />
+        @if (loginForm.controls['email'].invalid && loginForm.controls['email'].touched) {
+          <p class="text-red-500 text-sm mt-1">
+            Please enter a valid email.
+          </p>
+        }
+      </div>
+
+      <!-- Password Field -->
+      <div class="mb-6">
+        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          placeholder="Enter your password"
+          class="mt-1 w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+          [ngClass]="{
+            'border-red-500': loginForm.controls['password'].invalid && loginForm.controls['password'].touched,
+            'border-gray-300': loginForm.controls['password'].valid || !loginForm.controls['password'].touched
+          }"
+        />
+        @if (loginForm.controls['password'].invalid && loginForm.controls['password'].touched) {
+          <p class="text-red-500 text-sm mt-1">
+            Password must be at least 6 characters.
+          </p>
+        }
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        class="w-full bg-blue-700 text-white py-2 px-4 rounded-lg shadow hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 disabled:opacity-50"
+        [disabled]="loginForm.invalid"
+      >
+        Login
+      </button>
+
+      <!-- Back to Home Link -->
+      <div class="mt-4 text-center">
+        <a href="#" class="text-blue-500 hover:underline" (click)="goBack()">Back to Home</a> <br>
+        <a routerLink="/register" class="text-blue-500 hover:underline">Create an account</a>
+      </div>
+
+      <!-- Error Message -->
+      @if (errorMessage) {
+        <p class="text-red-500 text-sm text-center mt-4">{{ errorMessage }}</p>
+      }
+    </form>
+  </div>
+</div>

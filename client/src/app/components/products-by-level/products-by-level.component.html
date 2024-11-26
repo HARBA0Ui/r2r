@@ -1,0 +1,14 @@
+<div class="min-h-[50vh] p-12">
+    @if(products.length == 0 && isLoading){
+        <app-spinner />
+        }@else if(products.length == 0 && !isLoading){
+        <h1 class="text-4xl font-bold text-center">No Products Has been found!</h1>
+        }@else {
+        <div class="flex justify-center flex-wrap gap-6 py-12 px-20">
+          @for(p of products; track $index){
+          <app-card [product]="p" />
+          }
+        </div>
+        }
+        
+</div>

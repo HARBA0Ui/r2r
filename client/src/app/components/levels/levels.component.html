@@ -1,0 +1,23 @@
+<div class="my-12">
+  <h3 class="level-title text-6xl text-zinc-950 font-extrabold text-center mb-8 uppercase"><span class="h3 text-blue-950">Rise</span> to open all levels</h3>
+<div class="level-cards">
+  @for (level of levels; track level.levelNumber) {
+  <div class="link-level">
+    <a
+      [routerLink]="['/products/level/' + level.levelNumber]"
+      routerLinkActive="active-link"
+      class="level-card"
+    >
+      <img
+        src="/lvl{{ level.levelNumber }}.jpg"
+        [alt]="'Level ' + level.name"
+      />
+      <div class="card-body">
+        <h5 class="card-title text-center">Level {{ level.name }} ({{level.levelNumber}})</h5>
+      </div>
+    </a>
+  </div>
+  }
+</div>
+
+</div>

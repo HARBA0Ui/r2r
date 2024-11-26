@@ -1,0 +1,38 @@
+<div class="cart-container min-h-[55vh] p-12">
+  @if(cart.length > 0){
+  <h1 class="text-center text-3xl text-blue-950 font-bold mb-5">
+    Your Cart ({{cart.length}})
+  </h1>
+  <div class="flex flex-col justify-center items-center">
+    @for(item of cart; track $index){
+    <div
+      class="cart-item max-w-[500px] bg-white rounded-lg shadow-md w-full p-4 mb-4 flex justify-between items-center"
+    >
+      <h2 class="text-lg font-semibold text-gray-800">{{ item.title }}</h2>
+      <p class="text-sm text-gray-600">
+        Price: <span class="font-medium">{{ item.price }} TND</span>
+      </p>
+      <p class="text-sm text-gray-600">
+        Quantity: <span class="font-medium">{{ item.quantity }}</span>
+      </p>
+      <button
+        (click)="removeFromCart(item.id)"
+        class="ml-4 bg-blue-950 hover:bg-blue-800 text-white text-sm px-4 py-2 rounded-lg transition-all duration-200 shadow-sm"
+      >
+        Remove
+      </button>
+    </div>
+    }
+    <button
+      (click)="clearCart()"
+      class="bg-red-700 text-white text-lg px-4 py-2 rounded-md mt-12"
+    >
+      Clear Cart <i class="bi bi-trash"></i>
+    </button>
+  </div>
+  }@else{
+  <h1 class="text-center text-3xl text-blue-950 font-bold">
+    Your Cart is empty!
+  </h1>
+  }
+</div>

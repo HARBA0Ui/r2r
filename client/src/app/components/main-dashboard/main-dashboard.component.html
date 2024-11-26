@@ -1,0 +1,41 @@
+<div class="flex-1 p-4">
+  <h1 class="text-center text-4xl mb-8">Products</h1>
+
+  @if(products.length==0){
+  <app-spinner />
+  }@else {
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    @for(product of products; track $index){
+    <div
+      class="p-4 bg-gray-100 shadow-md rounded-md relative border border-blue-950/50 flex justify-between items-center"
+    >
+      <div class="flex items-center gap-3">
+        <img [src]="product.imgs[0]" class="w-[80px] h-[100px] object-cover" />
+        <div>
+          <h2 class="text-lg font-bold">{{ product.title }}</h2>
+          <p class="text-sm text-gray-600 truncate">{{ product.desc }}</p>
+          <p class="font-semibold mt-2">Price: ${{ product.price }}</p>
+        </div>
+      </div>
+
+      <!-- Action Icons -->
+      <!-- delete function  -->
+      <div class="flex gap-2 mt-4">
+        <button
+          class="py-1 px-2 bg-red-700 text-white rounded-full hover:bg-red-800 transition"
+          (click)="onDeleteProduct(product.id)"
+        >
+          <i class="bi bi-trash text-xl"></i>
+        </button>
+        <a
+          [routerLink]="['/dashboard/update', product.id]"
+          class="py-1 px-2 bg-blue-700 text-white rounded-full hover:bg-blue-800 transition"
+        >
+          <i class="bi bi-pencil text-xl"></i>
+        </a>
+      </div>
+    </div>
+    }
+  </div>
+  }
+</div>

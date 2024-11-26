@@ -1,0 +1,39 @@
+<div class="min-h-screen flex">
+  <!-- Sidebar -->
+  <aside class="bg-blue-950 text-white !w-[200px] flex flex-col">
+    <ul class="space-y-6 flex-grow">
+      <li>
+        <a
+          class="dash-link text-blue-950 flex items-center gap-2"
+          routerLink="/dashboard"
+          >Dashboard <i class="bi bi-cart-fill"></i>
+        </a>
+      </li>
+      <li>
+        <a
+          class="dash-link text-blue-950 flex items-center gap-2"
+          routerLink="/dashboard/create"
+          >New Product <i class="bi bi-bag-plus-fill"></i>
+        </a>
+      </li>
+      <!-- <li>
+        <a
+          class="dash-link text-blue-950 flex items-center gap-2"
+          routerLink="/dashboard/create"
+          >Categories <i class="bi bi-book-half"></i>
+        </a>
+      </li> -->
+      <button
+        class="dash-link !bg-purple-800 text-white mt-auto text-left"
+        (click)="onLogout()"
+      >
+        Logout <i class="bi bi-box-arrow-left"></i>
+      </button>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="flex-1 p-4">
+    <router-outlet />
+  </div>
+</div>

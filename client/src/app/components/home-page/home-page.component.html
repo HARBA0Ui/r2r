@@ -1,0 +1,57 @@
+<div class="flex w-screen max-h-[76.5vh]">
+  <a routerLink="/products/gender/men" class="w-1/3 h-[76.5vh] overflow-hidden relative">
+    <img
+      src="man.jpg"
+      class="object-cover brightness-50 hover:brightness-75 transition-all cursor-pointer"
+    />
+    <h3
+      class="pointer-events-none absolute top-1/2 left-1/2 text-white uppercase text-7xl -translate-x-1/2 -translate-y-1/2 tracking-wider"
+    >
+      Men
+    </h3>
+  </a>
+  <a
+    routerLink="/products/gender/unisex"
+    class="w-1/3 h-[76.5vh] overflow-hidden relative"
+  >
+    <img
+      src="unisex.jpg"
+      class="object-cover brightness-75 hover:brightness-100 transition-all cursor-pointer"
+    />
+    <h3
+      class="pointer-events-none absolute top-1/2 left-1/2 text-white uppercase text-7xl -translate-x-1/2 -translate-y-1/2 tracking-wider"
+    >
+      Unisex
+    </h3>
+  </a>
+  <a
+    routerLink="/products/gender/women"
+    class="w-1/3 h-[76.5vh] overflow-hidden relative"
+  >
+    <img
+      src="woman.jpg"
+      class="object-cover brightness-50 hover:brightness-100 transition-all cursor-pointer"
+    />
+    <h3
+      class="pointer-events-none absolute top-1/2 left-1/2 text-white uppercase text-7xl -translate-x-1/2 -translate-y-1/2 tracking-wider"
+    >
+      Women
+    </h3>
+  </a>
+</div>
+<app-levels />
+@if(products.length == 0){
+<app-spinner />
+}@else {
+<div class="py-12 px-20">
+  <h3 class="text-6xl text-zinc-950 font-extrabold text-center mb-8 uppercase">
+    Out <span class="h3 text-blue-950">Latest</span> Products
+  </h3>
+  <div class="flex justify-center flex-wrap gap-6">
+    @for(p of products; track $index){
+    <app-card [product]="p" />
+    }
+  </div>
+</div>
+
+}

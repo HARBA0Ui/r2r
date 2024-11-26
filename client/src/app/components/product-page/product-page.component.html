@@ -1,0 +1,112 @@
+@if(product) {
+  <div class="min-h-[70vh] py-16">
+    <div
+      class="w-[90vw] sm:w-[85vw] md:w-[90vw] lg:w-[70vw] h-full py-12 m-auto flex flex-col md:flex-row items-center gap-x-14"
+    >
+      <div
+        class="w-[200px] h-[300px] sm:w-[250px] sm:h-[390px] md:w-[380px] md:h-[600px]"
+      >
+        <img
+          [src]="product.imgs[0]"
+          class="object-cover w-full h-full shadow-md border border-blue-950"
+        />
+      </div>
+      <div class="flex-1">
+        <article class="text-zinc-900 space-y-1">
+          <h2
+            class="text-center mt-4 md:mt-0 md:text-left text-5xl capitalize font-semibold"
+          >
+            {{ product.title }}
+          </h2>
+          <h2 class="font-bold text-3xl text-zinc-950">
+            {{ product.price }} TND
+          </h2>
+          <h4>
+            <span class="font-semibold">Category: </span>
+            <span>{{ product.category }}</span>
+          </h4>
+          <p class="text-justify">
+            <span class="font-semibold">Description: </span>
+            {{ product.desc }}
+          </p>
+        </article>
+        <div class="line w-full mx-auto my-4"></div>
+        <p class="text-md mb-2">To place an order, please complete these fields:</p>
+  
+        <!-- Form starts here -->
+        <form [formGroup]="orderForm" (ngSubmit)="addToCart($event)" class="flex flex-col space-y-4">
+          <input
+            type="text"
+            formControlName="username"
+            class="border-2 border-zinc-900 h-12 rounded-[.5rem] pl-4 placeholder:text-zinc-700 text-zinc-900 placeholder:text-sm"
+            placeholder="Enter Your Name..."
+          />
+          @if(orderForm.get('username')?.invalid && orderForm.get('username')?.touched) {
+          <div class="text-red-500 text-sm">Name is required and should be at least 3 characters.</div>
+          }
+  
+          <input
+            type="tel"
+            formControlName="tel"
+            class="border-2 border-zinc-900 h-12 rounded-[.5rem] pl-4 placeholder:text-zinc-700 text-zinc-900 placeholder:text-sm"
+            placeholder="Your phone number..."
+          />
+          @if(orderForm.get('tel')?.invalid && orderForm.get('tel')?.touched) {
+          <div class="text-red-500 text-sm">Phone number must be 8 digits.</div>
+          }
+  
+          <input
+            type="email"
+            formControlName="email"
+            class="border-2 border-zinc-900 h-12 rounded-[.5rem] pl-4 placeholder:text-zinc-700 text-zinc-900 placeholder:text-sm"
+            placeholder="Your email address..."
+          />
+          @if(orderForm.get('email')?.invalid && orderForm.get('email')?.touched) {
+          <div class="text-red-500 text-sm">Please enter a valid email.</div>
+          }
+  
+          <select
+            formControlName="city"
+            class="border-2 border-zinc-900 h-12 rounded-[.5rem] px-3 placeholder:text-zinc-700 text-zinc-900 placeholder:text-sm"
+          >
+            <option value="" disabled selected>Enter your city</option>
+            @for(city of cityOptions; track $index) {
+            <option [value]="city">{{ city }}</option>
+            }
+          </select>
+          @if(orderForm.get('city')?.invalid && orderForm.get('city')?.touched) {
+          <div class="text-red-500 text-sm">Please select a city.</div>
+          }
+  
+          <div class="flex items-center space-x-2 w-full">
+            <input
+              type="number"
+              formControlName="quantity"
+              class="px-2 w-32 text-lg border-zinc-950 border-2 h-[52px] rounded-[.5rem] placeholder:text-black"
+              min="1"
+            />
+            <button
+              type="submit"
+              class="flex-1 bg-blue-950 hover:bg-blue-900 text-white h-[52px] rounded-[.5rem] transition-all flex items-center justify-center gap-x-2"
+            >
+              Add to cart <i class="bi bi-cart-fill"></i>
+            </button>
+          </div>
+        </form>
+        <!-- Form ends here -->
+      </div>
+    </div>
+  </div>
+  } @else {
+  <app-spinner />
+  }
+  
+      <!-- <div class="line w-[80%] md:w-[650px] mx-auto mt-6"></div>
+      <h1 class="text-center text-4xl md:text-5xl my-6 md:my-10">
+        Our Latest Products
+      </h1>
+      <div class="mx-auto w-4/5 md:w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 px-8 md:px-24 pb-12 justify-items-center justify-center">
+        <div class="card" *ngFor="let product of latestFourProducts">
+          <app-card [product]="product"></app-card>
+        </div>
+      </div> -->
