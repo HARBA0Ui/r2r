@@ -74,7 +74,7 @@ export class CreateProductComponent implements OnInit {
           console.log('Product created:', response);
           this.isLoading = false;
           alert("the product has been created successfully!")
-          location.reload();
+          router.navigate(['/dashboard']);
         },
         (error) => {
           console.error('Error creating product:', error);
